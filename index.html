@@ -11,35 +11,17 @@
   <link rel="stylesheet" href="estilos.css?v=6">
 
   <style>
-    .acciones-panel{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      gap:10px;
+    .panel-busqueda .panel-encabezado{
+      display:block;
+      margin-bottom:30px;
     }
 
-    .botones-panel{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      gap:10px;
-    }
-
-    .boton-material{
-      display:inline-block;
-      text-decoration:none;
-      background:#0f766e;
-      color:#ffffff;
-      padding:11px 22px;
-      border-radius:999px;
-      font-weight:800;
-      white-space:nowrap;
-      box-shadow:0 8px 18px rgba(0,0,0,.12);
-    }
-
-    .boton-material:hover{
-      background:#0b4f4a;
-      color:#ffffff;
+    .texto-panel-materiales{
+      max-width:760px;
+      margin:14px 0 0;
+      color:#486581;
+      line-height:1.65;
+      font-size:1rem;
     }
 
     .grid-materiales{
@@ -54,7 +36,7 @@
       border:1px solid #d9e2ec;
       border-radius:24px;
       padding:22px;
-      min-height:245px;
+      min-height:250px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
@@ -144,21 +126,6 @@
     }
 
     @media (max-width:700px){
-      .acciones-panel{
-        align-items:flex-start;
-        width:100%;
-      }
-
-      .botones-panel{
-        width:100%;
-        flex-direction:column;
-      }
-
-      .boton-material{
-        width:100%;
-        text-align:center;
-      }
-
       .grid-materiales{
         grid-template-columns:1fr;
       }
@@ -187,7 +154,10 @@
         <span class="marca-icono" aria-hidden="true">MEA</span>
         <span>Banco Digital</span>
       </a>
-      <a class="enlace-cabecera" href="#presentacion">Acerca del recurso</a>
+
+      <a class="enlace-cabecera" href="#presentacion">
+        Acerca del recurso
+      </a>
     </nav>
 
     <div class="portada">
@@ -223,17 +193,10 @@
         <div>
           <p class="sobretitulo">Banco de recursos</p>
           <h2 id="titulo-catalogo">Explora materiales educativos accesibles</h2>
-        </div>
-
-        <div class="acciones-panel">
-          <div class="botones-panel">
-            <a href="generador.html" class="boton-material">
-              Generador Braille
-            </a>
-          </div>
-
-          <p class="contador" role="status" aria-live="polite">
-            1 recurso disponible
+          <p class="texto-panel-materiales">
+            Esta página organiza recursos educativos accesibles en un solo
+            espacio. Selecciona una tarjeta para ingresar al material disponible
+            o revisar las secciones que se encuentran en construcción.
           </p>
         </div>
       </div>
@@ -256,19 +219,35 @@
           </div>
         </article>
 
-        <article class="tarjeta-material">
+        <article class="tarjeta-material disponible">
           <div>
-            <div class="material-icono" aria-hidden="true">PIC´s</div>
-            <h3>Fichas educativas accesibles</h3>
+            <div class="material-icono" aria-hidden="true">PIC</div>
+            <h3>Pictogramas y apoyos visuales</h3>
             <p>
-              Buscador educativo conectado a ARASAAC para consultar pictogramas de apoyo a la 
-              comunicación, rutinas visuales y accesibilidad cognitiva.
+              Buscador educativo conectado a ARASAAC para consultar pictogramas
+              de apoyo a la comunicación, rutinas visuales y accesibilidad
+              cognitiva.
             </p>
           </div>
 
           <div class="tarjeta-pie">
-            <span class="estado-material construccion">Disponible</span>
+            <span class="estado-material disponible">Disponible</span>
             <a class="enlace-material" href="pictogramas.html">Ingresar</a>
+          </div>
+        </article>
+
+        <article class="tarjeta-material">
+          <div>
+            <div class="material-icono" aria-hidden="true">PDF</div>
+            <h3>Fichas educativas accesibles</h3>
+            <p>
+              Espacio previsto para fichas imprimibles con lectura clara,
+              contraste adecuado y organización visual accesible.
+            </p>
+          </div>
+
+          <div class="tarjeta-pie">
+            <span class="estado-material construccion">En construcción</span>
           </div>
         </article>
 
@@ -309,21 +288,6 @@
             <p>
               Recursos orientados a mejorar la visibilidad mediante contraste,
               tamaño de letra y distribución limpia del contenido.
-            </p>
-          </div>
-
-          <div class="tarjeta-pie">
-            <span class="estado-material construccion">En construcción</span>
-          </div>
-        </article>
-
-        <article class="tarjeta-material">
-          <div>
-            <div class="material-icono" aria-hidden="true">PIC</div>
-            <h3>Pictogramas y apoyos visuales</h3>
-            <p>
-              Espacio reservado para rutinas, secuencias, tableros y apoyos
-              visuales vinculados a la comunicación y la autonomía.
             </p>
           </div>
 
@@ -393,9 +357,10 @@
           </h2>
         </div>
         <p>
-          Esta página permite reunir recursos educativos accesibles en un solo
-          espacio. Su finalidad es facilitar el acceso a materiales de apoyo para
-          docentes, familias y estudiantes.
+          Esta página permite reunir recursos educativos accesibles en una sola
+          ruta de consulta. Su finalidad es facilitar el acceso a materiales de
+          apoyo para docentes, familias y estudiantes, manteniendo una
+          organización clara y progresiva.
         </p>
       </div>
     </section>
@@ -412,7 +377,9 @@
           <p>
             Los recursos digitales funcionan como apoyo educativo. En el caso
             del Braille, la representación visual no reemplaza el aprendizaje
-            táctil ni el uso de materiales impresos en relieve.
+            táctil ni el uso de materiales impresos en relieve. En el caso de
+            pictogramas, su selección debe considerar las necesidades
+            comunicativas de cada estudiante.
           </p>
         </div>
       </aside>
@@ -434,6 +401,7 @@
         <p>
           <a href="index.html">Inicio</a><br>
           <a href="generador.html">Generador Braille</a><br>
+          <a href="pictogramas.html">Pictogramas y apoyos visuales</a><br>
           <a href="#presentacion">Conoce el recurso</a><br>
           <a href="#aviso-pedagogico">Advertencia pedagógica</a>
         </p>
@@ -448,10 +416,12 @@
       </div>
 
       <div class="footer-bloque">
-        <h2>Accesibilidad</h2>
+        <h2>Créditos y licencias</h2>
         <p>
-          Contenido organizado para una consulta visual clara y compatible con
-          navegación por teclado.
+          Algunos recursos pueden utilizar materiales de terceros. Los
+          pictogramas proceden de ARASAAC. Autor pictogramas: Sergio Palao.
+          Propiedad: Gobierno de Aragón, España. Licencia: Creative Commons
+          BY-NC-SA.
         </p>
       </div>
     </div>
@@ -459,7 +429,7 @@
     <div class="footer-final">
       <p>
         © 2026 Materiales Educativos Accesibles. Desarrollado por Gabriel
-        Bermúdez con apoyo institucional del CREBE "Señor de los Milagros" -
+        Berrospi con apoyo institucional del CREBE "Señor de los Milagros" -
         Ucayali. Plataforma educativa sin fines de lucro.
       </p>
     </div>
