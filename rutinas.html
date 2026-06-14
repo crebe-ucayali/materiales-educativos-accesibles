@@ -703,5 +703,31 @@
     defer
   ></script>
   <script src="rutinas.js?v=10" defer></script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const camposRutinas = document.querySelectorAll(
+    ".seccion-rutinas input, .seccion-rutinas textarea, .rutinas input, .rutinas textarea"
+  );
+
+  camposRutinas.forEach(function (campo) {
+    campo.addEventListener("mousedown", function (e) {
+      e.stopPropagation();
+    });
+
+    campo.addEventListener("mouseup", function (e) {
+      e.stopPropagation();
+    });
+
+    campo.addEventListener("click", function (e) {
+      e.stopPropagation();
+      campo.focus();
+    });
+
+    campo.addEventListener("touchstart", function (e) {
+      e.stopPropagation();
+    });
+  });
+});
+</script>
 </body>
 </html>
