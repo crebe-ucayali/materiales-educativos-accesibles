@@ -22,22 +22,45 @@ const botonDescargarPdf = document.getElementById("descargar-pdf");
 let pasos = [];
 let pasoActivo = 0;
 
-botonCrearPasos.addEventListener("click", crearEspacios);
-cantidadPasos.addEventListener("change", crearEspacios);
-tituloRutina.addEventListener("input", renderizarPreview);
-formularioArasaac.addEventListener("submit", buscarPictogramas);
-botonDescargarJpg.addEventListener("click", descargarJpg);
-botonDescargarPdf.addEventListener("click", descargarPdf);
+iniciarRutinas();
 
-agregarContactoCabecera();
-crearEspacios();
-actualizarEnlacesExternos();
+function iniciarRutinas(){
+  if(!tituloRutina || !cantidadPasos || !botonCrearPasos || !pasosLibres || !estadoPasoActivo){
+    return;
+  }
+
+  botonCrearPasos.addEventListener("click", crearEspacios);
+  cantidadPasos.addEventListener("change", crearEspacios);
+  tituloRutina.addEventListener("input", renderizarPreview);
+
+  if(formularioArasaac){
+    formularioArasaac.addEventListener("submit", buscarPictogramas);
+  }
+
+  if(botonDescargarJpg){
+    botonDescargarJpg.addEventListener("click", descargarJpg);
+  }
+
+  if(botonDescargarPdf){
+    botonDescargarPdf.addEventListener("click", descargarPdf);
+  }
+
+  agregarContactoCabecera();
+  crearEspacios();
+}
 
 function agregarContactoCabecera(){
   const navegacion = document.querySelector(".navegacion");
-  const enlaceExistente = document.querySelector('.navegacion a[href="contacto.html"]');
 
-  if(!navegacion || enlaceExistente){
+  if(!navegacion){
+    return;
+  }
+
+  const contactoUrl = "https://gabriel-lsp.github.io/accesos-complementarios/contacto.html";
+  const enlaceExistente = navegacion.querySelector(`a[href="${contactoUrl}"], a[href="contacto.html"]`);
+
+  if(enlaceExistente){
+    enlaceExistente.href = contactoUrl;
     return;
   }
 
@@ -61,13 +84,13 @@ function agregarContactoCabecera(){
 
   const enlaceContacto = document.createElement("a");
   enlaceContacto.className = "enlace-cabecera";
-  enlaceContacto.href = "contacto.html";
+  enlaceContacto.href = contactoUrl;
   enlaceContacto.textContent = "Contacto";
   contenedor.appendChild(enlaceContacto);
 }
 
 function crearEspacios(){
-  const total = Number(cantidadPasos.value);
+  const total = Number(cantidadPasos.value || 4);
 
   pasos = Array.from({ length: total }, (_, index) => {
     return pasos[index] || {
@@ -78,6 +101,10 @@ function crearEspacios(){
 
   if(pasoActivo >= pasos.length){
     pasoActivo = pasos.length - 1;
+  }
+
+  if(pasoActivo < 0){
+    pasoActivo = 0;
   }
 
   renderizarPasos();
@@ -109,21 +136,10 @@ function renderizarPasos(){
       </div>
 
       <div class="acciones-paso">
-        <button
-          class="cambiar-paso"
-          type="button"
-          data-accion="cambiar"
-          data-index="${index}"
-        >
+        <button class="cambiar-paso" type="button" data-accion="cambiar" data-index="${index}">
           Usar paso
         </button>
-
-        <button
-          class="quitar-paso"
-          type="button"
-          data-accion="quitar"
-          data-index="${index}"
-        >
+        <button class="quitar-paso" type="button" data-accion="quitar" data-index="${index}">
           Quitar pictograma
         </button>
       </div>
@@ -150,17 +166,18 @@ function renderizarPasos(){
         return;
       }
 
-      if(accion === "texto"){
-        pasoActivo = index;
-        marcarPasoActivo();
-        return;
-      }
-
       pasoActivo = index;
       marcarPasoActivo();
     });
 
     const inputTexto = tarjeta.querySelector(".texto-paso");
+
+    inputTexto.addEventListener("click", (evento) => {
+      evento.stopPropagation();
+      pasoActivo = index;
+      marcarPasoActivo();
+    });
+
     inputTexto.addEventListener("input", (evento) => {
       pasos[index].texto = evento.target.value;
       renderizarPreview();
@@ -171,10 +188,15 @@ function renderizarPasos(){
 }
 
 function marcarPasoActivo(){
-  renderizarPasos();
+  document.querySelectorAll(".paso-libre").forEach((tarjeta) => {
+    tarjeta.classList.toggle("activo", Number(tarjeta.dataset.index) === pasoActivo);
+  });
+
   actualizarEstadoPasoActivo();
 
-  estadoBusqueda.textContent = `Paso ${pasoActivo + 1} seleccionado. Puedes buscar un pictograma nuevo o reemplazar el actual.`;
+  if(estadoBusqueda){
+    estadoBusqueda.textContent = `Paso ${pasoActivo + 1} seleccionado. Puedes buscar un pictograma nuevo o reemplazar el actual.`;
+  }
 }
 
 async function buscarPictogramas(evento){
@@ -267,8 +289,7 @@ function asignarPictograma(pictograma){
 
   if(siguienteVacio !== -1){
     pasoActivo = siguienteVacio;
-    renderizarPasos();
-    actualizarEstadoPasoActivo();
+    marcarPasoActivo();
     estadoBusqueda.textContent = `Pictograma agregado. Ahora está seleccionado el paso ${pasoActivo + 1}.`;
   }else{
     actualizarEstadoPasoActivo();
@@ -301,7 +322,9 @@ function quitarPictograma(index){
   renderizarPreview();
   actualizarEstadoPasoActivo();
 
-  estadoBusqueda.textContent = `Se quitó el pictograma del paso ${index + 1}. Busca otro pictograma para reemplazarlo.`;
+  if(estadoBusqueda){
+    estadoBusqueda.textContent = `Se quitó el pictograma del paso ${index + 1}. Busca otro pictograma para reemplazarlo.`;
+  }
 }
 
 function actualizarEstadoPasoActivo(){
@@ -319,23 +342,17 @@ function renderizarPreview(){
     if(paso.pictograma){
       item.innerHTML = `
         <div class="rutina-numero">${index + 1}</div>
-
         <img
           src="${paso.pictograma.imagen}"
           alt="Pictograma de ${escaparTexto(paso.pictograma.palabra)}"
           crossorigin="anonymous"
         >
-
         <p>${escaparTexto(paso.texto || paso.pictograma.palabra)}</p>
       `;
     }else{
       item.innerHTML = `
         <div class="rutina-numero">${index + 1}</div>
-
-        <div class="rutina-pendiente">
-          Pendiente
-        </div>
-
+        <div class="rutina-pendiente">Pendiente</div>
         <p>Seleccionar pictograma</p>
       `;
     }
@@ -388,7 +405,6 @@ async function descargarPdf(){
 
     for(let indiceGrupo = 0; indiceGrupo < grupos.length; indiceGrupo++){
       const paginaTemporal = crearPaginaRutinaPdf(grupos[indiceGrupo], indiceGrupo, grupos.length);
-
       document.body.appendChild(paginaTemporal);
 
       await esperarImagenes(paginaTemporal);
@@ -415,14 +431,7 @@ async function descargarPdf(){
       const anchoPagina = pdf.internal.pageSize.getWidth();
       const altoPagina = pdf.internal.pageSize.getHeight();
 
-      pdf.addImage(
-        imagen,
-        "JPEG",
-        0,
-        0,
-        anchoPagina,
-        altoPagina
-      );
+      pdf.addImage(imagen, "JPEG", 0, 0, anchoPagina, altoPagina);
     }
 
     pdf.save(crearNombreArchivo("rutina-visual", "pdf"));
@@ -451,7 +460,6 @@ function crearPaginaRutinaPdf(grupoPasos, numeroPagina, totalPaginas){
   tituloElemento.textContent = totalPaginas > 1
     ? `${titulo} - página ${numeroPagina + 1}`
     : titulo;
-
   tituloElemento.style.margin = "0 0 28px";
   tituloElemento.style.textAlign = "center";
   tituloElemento.style.fontSize = "34px";
@@ -467,7 +475,6 @@ function crearPaginaRutinaPdf(grupoPasos, numeroPagina, totalPaginas){
 
   grupoPasos.forEach((paso, index) => {
     const numeroReal = numeroPagina * 4 + index + 1;
-
     const item = document.createElement("div");
     item.style.border = "2px solid #d9e2ec";
     item.style.borderRadius = "22px";
@@ -509,7 +516,6 @@ function crearPaginaRutinaPdf(grupoPasos, numeroPagina, totalPaginas){
       imagen.style.maxWidth = "100%";
       imagen.style.maxHeight = "210px";
       imagen.style.objectFit = "contain";
-
       zonaImagen.appendChild(imagen);
     }else{
       const pendiente = document.createElement("p");
@@ -517,7 +523,6 @@ function crearPaginaRutinaPdf(grupoPasos, numeroPagina, totalPaginas){
       pendiente.style.margin = "0";
       pendiente.style.color = "#486581";
       pendiente.style.fontWeight = "800";
-
       zonaImagen.appendChild(pendiente);
     }
 
@@ -560,6 +565,7 @@ function crearPaginaRutinaPdf(grupoPasos, numeroPagina, totalPaginas){
 
   return pagina;
 }
+
 function esperarImagenes(contenedor){
   const imagenes = Array.from(contenedor.querySelectorAll("img"));
 
@@ -603,7 +609,6 @@ function obtenerPalabra(picto){
 
 function crearNombreArchivo(base, extension){
   const titulo = tituloRutina.value.trim() || base;
-
   const nombre = normalizarTexto(titulo)
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
@@ -625,29 +630,4 @@ function escaparTexto(texto){
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
-}
-
-function actualizarEnlacesExternos(){
-  const bloques = document.querySelectorAll(".footer-bloque");
-  const bloqueEnlaces = Array.from(bloques).find((bloque) => {
-    const titulo = bloque.querySelector("h2");
-    return titulo && titulo.textContent.trim().toLowerCase() === "enlaces";
-  });
-
-  if(!bloqueEnlaces){
-    return;
-  }
-
-  const parrafo = bloqueEnlaces.querySelector("p");
-
-  if(!parrafo){
-    return;
-  }
-
-  parrafo.innerHTML = `
-    <a href="https://gabriel-lsp.github.io/capacitaciones-crebe-ucayali/">Capacitaciones CREBE</a><br>
-    <a href="https://gabriel-lsp.github.io/banco-digital-accesible/">Banco Digital Accesible</a><br>
-    <a href="https://gabriel-lsp.github.io/juegos-interactivos-accesibles/">Juegos Educativos Accesibles</a><br>
-    <a href="https://gabriel-lsp.github.io/banco-digital-accesible/noti-inclusivos/">Noti Inclusivos</a>
-  `;
 }
