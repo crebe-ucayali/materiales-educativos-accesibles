@@ -631,3 +631,36 @@ function escaparTexto(texto){
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const selectorCampos = "textarea, input[type='text'], input:not([type]), [contenteditable='true']";
+
+  function protegerCampo(e) {
+    const campo = e.target.closest(selectorCampos);
+
+    if (!campo) return;
+
+    e.stopPropagation();
+
+    setTimeout(function () {
+      campo.focus({ preventScroll: true });
+    }, 0);
+  }
+
+  ["pointerdown", "mousedown", "mouseup", "click", "touchstart", "touchend"].forEach(function (evento) {
+    window.addEventListener(evento, protegerCampo, true);
+    document.addEventListener(evento, protegerCampo, true);
+  });
+
+  document.querySelectorAll(selectorCampos).forEach(function (campo) {
+    campo.addEventListener("blur", function () {
+      const mismoCampo = campo;
+
+      setTimeout(function () {
+        if (document.activeElement === document.body) {
+          mismoCampo.focus({ preventScroll: true });
+        }
+      }, 0);
+    });
+  });
+});
