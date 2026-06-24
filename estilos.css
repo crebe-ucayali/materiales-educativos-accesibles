@@ -48,15 +48,18 @@ a{color:inherit;}
 .etiqueta,.etiqueta-superior{color:#c9f7ee;}
 .sobretitulo,.seccion-etiqueta{color:var(--verde-700);}
 .portada h1{max-width:900px;margin:0 0 22px;color:var(--blanco);font-family:Georgia, "Times New Roman", serif;font-size:clamp(2.5rem,5.8vw,4.15rem);line-height:1.04;letter-spacing:-.04em;}
+.titulo-portada-enlace{color:inherit;text-decoration:none;}
 .subtitulo{max-width:880px;margin:0;color:rgba(255,255,255,.96);font-size:1.22rem;line-height:1.65;}
 
 main{max-width:1120px;margin:-78px auto 0;padding:0 18px 44px;position:relative;z-index:2;}
 .panel-busqueda,.panel-presentacion,.aviso-pedagogico{background:var(--blanco);border:1px solid var(--gris-300);border-radius:26px;box-shadow:var(--sombra);}
 .panel-busqueda{padding:34px 46px 40px;}
+.panel-busqueda .panel-encabezado{display:block;margin-bottom:30px;}
 .panel-encabezado{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:30px;}
 .sobretitulo{margin:0 0 12px;color:var(--verde-700);font-size:.86rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;}
 .panel-encabezado h2,.panel-presentacion h2,.aviso-pedagogico h2{margin:0;color:#072f57;font-family:Georgia, "Times New Roman", serif;font-size:clamp(1.9rem,3.6vw,2.65rem);line-height:1.1;}
 .texto-panel{max-width:860px;margin:14px 0 0;color:var(--gris-600);line-height:1.65;font-size:1rem;}
+.texto-panel-materiales{max-width:760px;margin:14px 0 0;color:#486581;line-height:1.65;font-size:1rem;}
 .contador{display:inline-flex;align-items:center;justify-content:center;margin:4px 0 0;padding:10px 18px;border-radius:999px;background:var(--verde-100);color:var(--verde-700);font-weight:900;}
 .herramientas{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;margin-top:10px;}
 .grupo-busqueda label,.grupo-filtros p{display:block;margin:0 0 10px;color:#072f57;font-weight:900;}
@@ -72,6 +75,18 @@ main{max-width:1120px;margin:-78px auto 0;padding:0 18px 44px;position:relative;
 .tarjeta{background:var(--blanco);border:1px solid var(--gris-300);border-radius:24px;padding:22px;box-shadow:0 10px 24px rgba(16,42,67,.08);}
 .tarjeta h3{margin:0 0 8px;color:#072f57;}
 .tarjeta p{margin:0;color:var(--gris-600);line-height:1.55;}
+.grid-materiales{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;}
+.tarjeta-material{background:#ffffff;border:1px solid #d9e2ec;border-radius:24px;padding:22px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 10px 22px rgba(16,42,67,.06);}
+.tarjeta-material.disponible{background:linear-gradient(180deg,#ffffff 0%,#eef9f6 100%);border-color:rgba(15,118,110,.35);}
+.material-icono{width:56px;height:56px;border-radius:18px;background:#e6f4f1;color:#0f766e;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1rem;margin-bottom:16px;}
+.tarjeta-material h3{margin:0 0 10px;color:#0b2f4a;font-size:1.15rem;line-height:1.25;}
+.tarjeta-material p{margin:0;color:#486581;line-height:1.58;font-size:.96rem;}
+.tarjeta-pie{margin-top:22px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+.estado-material{display:inline-block;padding:8px 12px;border-radius:999px;font-size:.82rem;font-weight:800;}
+.estado-material.disponible{background:#d9f2ec;color:#0f766e;}
+.estado-material.construccion{background:#fff4d6;color:#8a5a00;}
+.enlace-material{display:inline-block;text-decoration:none;background:#0f766e;color:#ffffff;padding:9px 16px;border-radius:999px;font-weight:800;font-size:.9rem;}
+.enlace-material:hover{background:#0b4f4a;color:#ffffff;}
 .contenedor-boton-mas{display:flex;justify-content:center;margin-top:28px;}
 .boton-mas,.boton-primario{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 24px;border-radius:999px;background:var(--verde-700);color:var(--blanco);font-weight:900;box-shadow:0 8px 18px rgba(0,0,0,.12);}
 .boton-mas:hover,.boton-primario:hover{background:var(--verde-800);}
@@ -104,14 +119,15 @@ footer{background:#082f49;color:var(--blanco);padding:42px 18px 26px;}
 @media (max-width:900px){
   .herramientas,.panel-presentacion,.footer-contenido{grid-template-columns:1fr;}
   .lista-tarjetas{grid-template-columns:repeat(2,1fr);}
+  .grid-materiales{grid-template-columns:repeat(2,1fr);}
   .footer-marca{align-items:center;}
 }
 @media (max-width:700px){
   .cabecera{padding:26px 18px 116px;}
   .navegacion{align-items:flex-start;flex-direction:column;}
-  .enlaces-cabecera{justify-content:flex-start;gap:12px;}
-  .enlace-cabecera{width:auto;min-height:46px;padding:10px 22px;font-size:1rem;}
-  .cabecera .enlace-cabecera[href*="accesos-complementarios/contacto.html"]::after{font-size:1rem;}
+  .enlaces-cabecera{display:flex;width:100%;justify-content:flex-start;align-items:center;gap:8px;flex-wrap:wrap;}
+  .enlace-cabecera{width:auto;min-width:0;min-height:38px;padding:8px 12px;font-size:.84rem;line-height:1.1;text-align:center;white-space:nowrap;border-radius:999px;}
+  .cabecera .enlace-cabecera[href*="accesos-complementarios/contacto.html"]::after{font-size:.84rem;}
   .portada{margin-top:54px;}
   .bloque-institucional{align-items:center;gap:16px;margin-bottom:28px;}
   .logo-crebe{width:80px;max-width:80px;height:80px;max-height:80px;}
@@ -122,6 +138,7 @@ footer{background:#082f49;color:var(--blanco);padding:42px 18px 26px;}
   .panel-busqueda,.panel-presentacion,.aviso-pedagogico{padding:26px 20px 30px;}
   .panel-encabezado{flex-direction:column;}
   .lista-tarjetas{grid-template-columns:1fr;}
+  .grid-materiales{grid-template-columns:1fr;}
   .tarjeta-pie{flex-direction:column;align-items:flex-start;}
   .enlace-material{width:100%;text-align:center;}
   .seccion-rutinas input,.seccion-rutinas textarea,.rutinas input,.rutinas textarea{pointer-events:auto;user-select:text;-webkit-user-select:text;cursor:text;position:relative;z-index:10;}
