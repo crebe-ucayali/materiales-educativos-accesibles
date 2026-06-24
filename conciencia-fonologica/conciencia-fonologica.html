@@ -55,15 +55,37 @@
           <div class="grupo-formulario">
             <label for="letraBase">Letra base</label>
             <select id="letraBase">
-              <option value="m">M</option><option value="p">P</option><option value="l">L</option><option value="s">S</option><option value="t">T</option><option value="n">N</option><option value="d">D</option><option value="f">F</option><option value="b">B</option><option value="r">R</option><option value="c">C</option><option value="g">G</option><option value="j">J</option><option value="ñ">Ñ</option><option value="ch">CH</option><option value="ll">LL</option>
+              <option value="m">M</option>
+              <option value="p">P</option>
+              <option value="l">L</option>
+              <option value="s">S</option>
+              <option value="t">T</option>
+              <option value="n">N</option>
+              <option value="d">D</option>
+              <option value="f">F</option>
+              <option value="b">B</option>
+              <option value="r">R</option>
+              <option value="c">C</option>
+              <option value="g">G</option>
+              <option value="j">J</option>
+              <option value="ñ">Ñ</option>
+              <option value="ch">CH</option>
+              <option value="ll">LL</option>
             </select>
             <span class="nota-campo">Se usa para formar la familia silábica: ma, me, mi, mo, mu.</span>
           </div>
           <div class="fila-formulario">
-            <div class="grupo-formulario"><label for="palabra">Palabra</label><input id="palabra" type="text" value="mesa" autocomplete="off"></div>
-            <div class="grupo-formulario"><label for="silabas">Sílabas</label><input id="silabas" type="text" value="me-sa" autocomplete="off"></div>
+            <div class="grupo-formulario">
+              <label for="palabra">Palabra</label>
+              <input id="palabra" type="text" value="mesa" autocomplete="off"></div>
+            <div class="grupo-formulario">
+              <label for="silabas">Sílabas</label>
+              <input id="silabas" type="text" value="me-sa" autocomplete="off"></div>
           </div>
-          <div class="grupo-formulario"><label for="consigna">Consigna breve</label><textarea id="consigna">Observa la imagen, lee las sílabas y completa la palabra.</textarea></div>
+          <div class="grupo-formulario">
+            <label for="consigna">Consigna breve</label>
+            <textarea id="consigna">Observa la imagen, lee las sílabas y completa la palabra.</textarea>
+          </div>
           <div class="grupo-formulario">
             <label for="imagenUrl">Imagen de apoyo</label>
             <input id="imagenUrl" type="url" placeholder="Pega una URL de imagen o busca en ARASAAC">
@@ -97,20 +119,70 @@
         </aside>
 
         <section class="vista-silabas" aria-label="Vista previa de la ficha">
-          <div class="vista-cabecera"><div><h3>Vista previa</h3><p>Revisa la ficha antes de imprimirla o guardarla como PDF.</p></div><button type="button" class="boton-secundario" id="pronunciar">Escuchar palabra</button></div>
+          <div class="vista-cabecera"><div>
+            <h3>Vista previa</h3>
+            <p>Revisa la ficha antes de imprimirla o guardarla como PDF.</p>
+          </div>
+            <button type="button" class="boton-secundario" id="pronunciar">Escuchar palabra</button>
+          </div>
           <article class="hoja-ficha" id="hojaFicha">
-            <div class="cabecera-ficha"><div><h2>Ficha de silabeo</h2><p id="textoConsigna">Observa la imagen, lee las sílabas y completa la palabra.</p></div><div class="etiqueta-ficha" id="etiquetaSilabas">Sílabas: me - sa</div></div>
-            <section class="bloque-ficha presentacion-palabra"><div class="imagen-ficha" id="imagenFicha"><span>Imagen de apoyo</span></div><div><p class="palabra-principal" id="palabraGrande">MESA</p><div class="silabas-principales" id="silabasGrandes"><span class="chip-silaba">me</span><span class="chip-silaba">sa</span></div></div></section>
-            <section class="bloque-ficha" id="bloqueFamilia"><h3>1. Leo la familia silábica</h3><div class="silabario" id="silabario"></div></section>
-            <section class="bloque-ficha" id="bloqueInicial"><h3>2. Marco la sílaba inicial</h3><table class="tabla-actividad"><thead><tr><th>Palabra</th><th>Sílaba inicial</th><th>Respuesta</th></tr></thead><tbody id="tablaInicial"></tbody></table></section>
-            <section class="bloque-ficha" id="bloqueCompletar"><h3>3. Completo la palabra</h3><div id="completarPalabra"></div></section>
-            <section class="bloque-ficha" id="bloqueOrdenar"><h3>4. Ordeno las sílabas</h3><p>Recorta o señala las sílabas y ordénalas para formar la palabra.</p><div class="cajas-recorte" id="ordenarSilabas"></div><div class="actividad-linea"><span>Palabra formada:</span><span class="linea-respuesta"></span></div></section>
+            <div class="cabecera-ficha">
+              <div>
+              <h2>Ficha de silabeo</h2>
+              <p id="textoConsigna">Observa la imagen, lee las sílabas y completa la palabra.</p>
+            </div>
+              <div class="etiqueta-ficha" id="etiquetaSilabas">Sílabas: me - sa</div>
+            </div>
+            <section class="bloque-ficha presentacion-palabra">
+              <div class="imagen-ficha" id="imagenFicha">
+                <span>Imagen de apoyo</span>
+              </div>
+              <div>
+                <p class="palabra-principal" id="palabraGrande">MESA</p>
+                <div class="silabas-principales" id="silabasGrandes">
+                  <span class="chip-silaba">me</span>
+                  <span class="chip-silaba">sa</span>
+                </div>
+              </div>
+            </section>
+            <section class="bloque-ficha" id="bloqueFamilia">
+              <h3>1. Leo la familia silábica</h3>
+              <div class="silabario" id="silabario">
+              </div>
+            </section>
+            <section class="bloque-ficha" id="bloqueInicial">
+              <h3>2. Marco la sílaba inicial</h3>
+              <table class="tabla-actividad"><thead>
+                <tr>
+                  <th>Palabra</th>
+                  <th>Sílaba inicial</th>
+                  <th>Respuesta</th>
+                </tr>
+              </thead>
+                <tbody id="tablaInicial">
+                </tbody>
+              </table>
+            </section>
+            <section class="bloque-ficha" id="bloqueCompletar">
+              <h3>3. Completo la palabra</h3>
+              <div id="completarPalabra">   
+              </div>
+            </section>
+            <section class="bloque-ficha" id="bloqueOrdenar">
+              <h3>4. Ordeno las sílabas</h3>
+              <p>Recorta o señala las sílabas y ordénalas para formar la palabra.</p>
+              <div class="cajas-recorte" id="ordenarSilabas">  
+              </div>
+              <div class="actividad-linea">
+                <span>Palabra formada:</span>
+                <span class="linea-respuesta"></span>
+              </div>
+            </section>
             <footer class="pie-ficha">Material educativo generado para uso pedagógico. Si se emplean pictogramas de ARASAAC, mantener el crédito correspondiente: ARASAAC, Gobierno de Aragón, autor de pictogramas Sergio Palao.</footer>
           </article>
         </section>
       </div>
     </section>
-
     <section class="seccion-aviso" aria-labelledby="titulo-aviso">
       <aside class="aviso-pedagogico">
         <div class="aviso-icono" aria-hidden="true">i</div>
