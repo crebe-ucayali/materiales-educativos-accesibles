@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../estilos.css?v=17">
   <link rel="stylesheet" href="https://crebe-ucayali.github.io/accesos-complementarios/accesibilidad/accesibilidad.css?v=7">
   <link rel="stylesheet" href="estilos.css?v=8">
+  <link rel="stylesheet" href="constancia.css?v=1">
 </head>
 <body>
   <a class="salto-contenido" href="#contenido-principal">Ir al contenido</a>
@@ -64,15 +65,42 @@
 
       <div class="acciones-practica"><button id="boton-comprobar" class="boton-principal" type="button">Comprobar respuesta</button><button id="boton-siguiente" class="boton-principal" type="button" disabled>Siguiente ejercicio</button></div>
       <div id="resultado" class="resultado" role="status" aria-live="polite">Selecciona una respuesta y comprueba.</div>
+
+      <section id="panel-constancia" class="panel-constancia" aria-labelledby="titulo-panel-constancia" hidden>
+        <p class="sobretitulo">Logro alcanzado</p>
+        <h2 id="titulo-panel-constancia">Genera tu constancia simbólica</h2>
+        <p>Completaste correctamente los 10 ejercicios de esta práctica. Escribe tu nombre para generar un reconocimiento educativo y motivacional.</p>
+        <div class="campo-constancia"><label for="nombre-constancia">Nombre del participante</label><input id="nombre-constancia" type="text" maxlength="80" autocomplete="name" placeholder="Escribe tu nombre completo"></div>
+        <div class="acciones-constancia"><button id="generar-constancia" class="boton-principal" type="button">Generar constancia simbólica</button></div>
+        <p class="aviso-simbolico"><strong>Importante:</strong> este documento es simbólico, educativo y motivacional. No constituye certificado oficial, acreditación académica ni constancia institucional de capacitación.</p>
+      </section>
     </section>
 
     <section class="panel-informativo" aria-labelledby="titulo-aprender"><div><p class="sobretitulo">Conoce el sistema</p><h2 id="titulo-aprender">Dos ejercicios en cada orientación</h2></div><p>Tanto en lectura como en escritura en regleta puedes practicar de signo a letra o de letra a signo. La única diferencia es la orientación: lectura normal de izquierda a derecha y escritura en regleta con disposición horizontal invertida.</p></section>
     <section class="aviso-pedagogico aviso-braille" aria-labelledby="titulo-aviso-braille"><div class="aviso-icono" aria-hidden="true">i</div><div><h2 id="titulo-aviso-braille">Orientación pedagógica</h2><p>Esta actividad funciona como apoyo visual introductorio. No reemplaza el aprendizaje táctil ni la práctica directa con regleta, punzón y papel adecuado.</p></div></section>
   </main>
 
+  <dialog id="dialogo-constancia" class="dialogo-constancia" aria-labelledby="titulo-constancia">
+    <div class="constancia-contenedor">
+      <div class="constancia-acciones"><button id="imprimir-constancia" class="boton-principal" type="button">Imprimir o guardar en PDF</button><button id="cerrar-constancia" class="boton-secundario" type="button">Cerrar</button></div>
+      <article class="constancia">
+        <p class="constancia-marca">Ecosistema Virtual Accesible · CREBE Ucayali</p>
+        <h2 id="titulo-constancia">Constancia simbólica de participación</h2>
+        <p class="constancia-subtitulo">Práctica interactiva del sistema Braille</p>
+        <p>Se reconoce a:</p>
+        <p id="constancia-nombre" class="constancia-nombre">Participante</p>
+        <p class="constancia-texto">por completar satisfactoriamente los diez ejercicios de reconocimiento inicial de letras y signos Braille, alcanzando el 100 % de respuestas correctas.</p>
+        <p class="constancia-logro">Logro motivacional: Explorador Braille</p>
+        <div class="constancia-datos"><span><strong>Fecha:</strong> <span id="constancia-fecha"></span></span><span><strong>Código:</strong> <span id="constancia-codigo"></span></span></div>
+        <p class="constancia-nota">Documento simbólico de carácter educativo y motivacional. No constituye certificado oficial, acreditación académica ni constancia institucional de capacitación.</p>
+      </article>
+    </div>
+  </dialog>
+
   <footer><div class="footer-contenido"><div class="footer-bloque footer-marca"><img class="footer-logo" src="https://crebe-ucayali.github.io/banco-digital-accesible/logo-crebe.png" alt="Logo del CREBE Señor de los Milagros - Ucayali"><div><h2>Práctica del sistema Braille</h2><p>Recurso educativo interactivo del módulo Materiales Educativos Accesibles.</p></div></div><div class="footer-bloque"><h2>Enlaces de MEA</h2><p><a href="../index.html">Volver a Materiales Educativos Accesibles</a><br><a href="../generador/generador.html">Abrir Generador Braille</a><br><a href="https://crebe-ucayali.github.io/">Inicio principal</a></p></div><div class="footer-bloque"><h2>Contacto CREBE</h2><p>CREBE "Señor de los Milagros" - Ucayali<br>Centro de Recursos de Educación Básica Especial<br><a href="https://crebe-ucayali.github.io/accesos-complementarios/paginas/contacto.html">Contacto Institucional</a></p></div></div><div class="footer-final"><p>© 2026 Gabriel Berrospi. Desarrollo original. Uso institucional autorizado al CREBE "Señor de los Milagros" - Ucayali.</p></div></footer>
 
   <script src="practica.js?v=7" defer></script>
+  <script src="constancia.js?v=1" defer></script>
   <script src="https://crebe-ucayali.github.io/accesos-complementarios/accesibilidad/accesibilidad.js?v=7" defer></script>
 </body>
 </html>
