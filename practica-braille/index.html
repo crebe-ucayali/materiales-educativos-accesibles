@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Práctica interactiva inicial del sistema Braille dentro de Materiales Educativos Accesibles del CREBE Ucayali.">
+  <meta name="author" content="Gabriel Berrospi">
+  <title>Práctica del sistema Braille | MEA</title>
+  <link rel="stylesheet" href="../estilos.css?v=17">
+  <link rel="stylesheet" href="estilos.css?v=1">
+  <link rel="stylesheet" href="https://crebe-ucayali.github.io/accesos-complementarios/accesibilidad/accesibilidad.css?v=7">
+</head>
+<body>
+  <a class="salto-contenido" href="#contenido-principal">Ir al contenido</a>
+
+  <header class="cabecera cabecera-braille">
+    <div class="patron-portada" aria-hidden="true"></div>
+    <nav class="navegacion" aria-label="Navegación principal">
+      <a class="marca marca-institucional" href="../index.html" aria-label="Volver al inicio de Materiales Educativos Accesibles">
+        <img class="marca-logo-superior" src="https://crebe-ucayali.github.io/banco-digital-accesible/logo-crebe.png" alt="Logo del CREBE Señor de los Milagros - Ucayali">
+        <span class="marca-texto-superior">
+          <span class="marca-modulo">Materiales Educativos Accesibles</span>
+          <span class="marca-nombre-institucional">CREBE "Señor de los Milagros" - Ucayali</span>
+          <span class="marca-detalle-institucional">Centro de Recursos de Educación Básica Especial</span>
+        </span>
+      </a>
+      <div class="enlaces-cabecera">
+        <a class="enlace-cabecera" href="../index.html">Volver a MEA</a>
+        <a class="enlace-cabecera" href="https://crebe-ucayali.github.io/">Inicio principal</a>
+        <a class="enlace-cabecera" href="https://crebe-ucayali.github.io/accesos-complementarios/paginas/contacto.html">Contacto</a>
+      </div>
+    </nav>
+
+    <div class="portada">
+      <p class="etiqueta">RECURSO INTERACTIVO ACCESIBLE</p>
+      <h1>Práctica del sistema Braille</h1>
+      <p class="subtitulo">Reconoce letras y forma signos Braille mediante actividades visuales progresivas, con retroalimentación inmediata y navegación accesible.</p>
+    </div>
+  </header>
+
+  <main id="contenido-principal" class="practica-contenido">
+    <section class="panel-practica" aria-labelledby="titulo-practica">
+      <div class="encabezado-practica">
+        <div>
+          <p class="sobretitulo">Nivel inicial</p>
+          <h2 id="titulo-practica">Selecciona los puntos correctos</h2>
+          <p id="instruccion">Observa la letra y activa los puntos que forman su signo Braille.</p>
+        </div>
+        <div class="progreso" aria-label="Progreso de la actividad">
+          <span>Ejercicio <strong id="numero-ejercicio">1</strong> de <strong id="total-ejercicios">10</strong></span>
+          <span>Aciertos: <strong id="aciertos">0</strong></span>
+        </div>
+      </div>
+
+      <div class="zona-ejercicio">
+        <section class="reto" aria-labelledby="titulo-reto">
+          <p class="etiqueta-reto">Letra a representar</p>
+          <div id="letra-objetivo" class="letra-objetivo" aria-live="polite">A</div>
+          <p id="titulo-reto" class="ayuda-reto">Activa los puntos de la celda Braille.</p>
+          <button id="boton-pista" class="boton-secundario" type="button">Escuchar pista</button>
+        </section>
+
+        <section class="celda-contenedor" aria-labelledby="titulo-celda">
+          <h3 id="titulo-celda">Celda Braille de seis puntos</h3>
+          <p class="ayuda-celda">Los puntos se numeran de arriba hacia abajo: 1, 2 y 3 a la izquierda; 4, 5 y 6 a la derecha.</p>
+          <div class="celda-braille" role="group" aria-label="Celda Braille interactiva">
+            <button class="punto" type="button" data-punto="1" aria-pressed="false" aria-label="Punto 1 desactivado"><span>1</span></button>
+            <button class="punto" type="button" data-punto="4" aria-pressed="false" aria-label="Punto 4 desactivado"><span>4</span></button>
+            <button class="punto" type="button" data-punto="2" aria-pressed="false" aria-label="Punto 2 desactivado"><span>2</span></button>
+            <button class="punto" type="button" data-punto="5" aria-pressed="false" aria-label="Punto 5 desactivado"><span>5</span></button>
+            <button class="punto" type="button" data-punto="3" aria-pressed="false" aria-label="Punto 3 desactivado"><span>3</span></button>
+            <button class="punto" type="button" data-punto="6" aria-pressed="false" aria-label="Punto 6 desactivado"><span>6</span></button>
+          </div>
+        </section>
+      </div>
+
+      <div class="acciones-practica">
+        <button id="boton-limpiar" class="boton-secundario" type="button">Limpiar celda</button>
+        <button id="boton-comprobar" class="boton-principal" type="button">Comprobar respuesta</button>
+        <button id="boton-siguiente" class="boton-principal" type="button" disabled>Siguiente ejercicio</button>
+      </div>
+
+      <div id="resultado" class="resultado" role="status" aria-live="polite">Selecciona los puntos y comprueba tu respuesta.</div>
+    </section>
+
+    <section class="panel-informativo" aria-labelledby="titulo-aprender">
+      <div>
+        <p class="sobretitulo">Conoce el sistema</p>
+        <h2 id="titulo-aprender">¿Cómo funciona la celda Braille?</h2>
+      </div>
+      <p>La celda Braille básica está formada por seis puntos organizados en dos columnas. Las distintas combinaciones permiten representar letras, números y signos. Esta práctica visual ayuda a reconocer su estructura inicial.</p>
+    </section>
+
+    <section class="aviso-pedagogico aviso-braille" aria-labelledby="titulo-aviso-braille">
+      <div class="aviso-icono" aria-hidden="true">i</div>
+      <div>
+        <h2 id="titulo-aviso-braille">Orientación pedagógica</h2>
+        <p>Esta actividad funciona como apoyo visual introductorio. No reemplaza el aprendizaje táctil del Braille ni el uso de materiales en relieve, regleta, punzón o máquina Braille.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-contenido">
+      <div class="footer-bloque footer-marca">
+        <img class="footer-logo" src="https://crebe-ucayali.github.io/banco-digital-accesible/logo-crebe.png" alt="Logo del CREBE Señor de los Milagros - Ucayali">
+        <div>
+          <h2>Práctica del sistema Braille</h2>
+          <p>Recurso educativo interactivo del módulo Materiales Educativos Accesibles.</p>
+        </div>
+      </div>
+      <div class="footer-bloque">
+        <h2>Enlaces de MEA</h2>
+        <p><a href="../index.html">Volver a Materiales Educativos Accesibles</a><br><a href="../generador/generador.html">Abrir Generador Braille</a><br><a href="https://crebe-ucayali.github.io/">Inicio principal</a></p>
+      </div>
+      <div class="footer-bloque">
+        <h2>Contacto CREBE</h2>
+        <p>CREBE "Señor de los Milagros" - Ucayali<br>Centro de Recursos de Educación Básica Especial<br><a href="https://crebe-ucayali.github.io/accesos-complementarios/paginas/contacto.html">Contacto Institucional</a></p>
+      </div>
+    </div>
+    <div class="footer-final"><p>© 2026 Gabriel Berrospi. Desarrollo original. Uso institucional autorizado al CREBE "Señor de los Milagros" - Ucayali.</p></div>
+  </footer>
+
+  <script src="practica.js?v=1" defer></script>
+  <script src="https://crebe-ucayali.github.io/accesos-complementarios/accesibilidad/accesibilidad.js?v=7" defer></script>
+</body>
+</html>
