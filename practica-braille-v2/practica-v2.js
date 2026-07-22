@@ -114,13 +114,13 @@ r.disabled=Boolean(configuracion.tipoFijo)||nivelClave==='avanzado'||nivelClave=
 }
 function actualizarApoyos(){
 const quedanPistas=configuracion.pistas>pistasUsadas;
-const puedeConfigurar=nivelClave==='personalizado';
+const puedeConfigurarAyuda=nivelClave==='inicial' || nivelClave==='intermedio' || nivelClave==='personalizado';
 $('interruptor-numeros').checked=numerosVisibles;
 $('interruptor-numeros').disabled=nivelClave==='avanzado';
 $('estado-numeros').textContent=numerosVisibles?'Visible':'Oculta';
 $('descripcion-numeros').textContent=numerosVisibles?'Los números están visibles.':'Los números están ocultos para aumentar la complejidad.';
 $('interruptor-ayuda').checked=ayudaActiva&&quedanPistas;
-$('interruptor-ayuda').disabled=nivelClave==='avanzado' || (!puedeConfigurar && nivelClave!=='inicial');
+$('interruptor-ayuda').disabled=!puedeConfigurarAyuda || !quedanPistas;
 const ayudaDisponible=ayudaActiva&&quedanPistas;
 $('contenedor-pista').hidden=!ayudaDisponible;
 $('mensaje-sin-ayuda').hidden=ayudaDisponible;
@@ -216,15 +216,14 @@ $('etiqueta-panel-derecho').textContent=tipo==='signo-letra'?'Signo a identifica
 $('titulo-panel-derecho').textContent=tipo==='signo-letra'?'Observa el signo Braille':'Elige el signo correcto';
 }
 function refrescarEjercicioPorConfiguracion(){
-if(panelPractica.hidden || !ejercicios.length) return;
 seleccion='';
 intentos=0;
+actualizarTextosEjercicio();
+renderizarOpciones();
 $('boton-comprobar').disabled=false;
 $('boton-siguiente').disabled=true;
 resultado.className='resultado';
-resultado.textContent='Configuración actualizada. Selecciona una respuesta y comprueba.';
-actualizarTextosEjercicio();
-renderizarOpciones();
+resultado.textContent='La configuración se actualizó. Selecciona una respuesta y comprueba.';
 }
 function mostrarEjercicio(){
 seleccion='';
