@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../estilos.css?v=17">
   <link rel="stylesheet" href="https://crebe-ucayali.github.io/accesos-complementarios/accesibilidad/accesibilidad.css?v=7">
   <link rel="stylesheet" href="../practica-braille/estilos.css?v=8">
-  <link rel="stylesheet" href="../practica-braille/constancia.css?v=1">
+  <link rel="stylesheet" href="../practica-braille/constancia.css?v=2">
   <link rel="stylesheet" href="niveles.css?v=3">
 </head>
 <body>
@@ -53,9 +53,7 @@
     </section>
 
     <section id="panel-practica" class="panel-practica" aria-labelledby="titulo-practica" hidden>
-      <nav class="navegacion-interna-practica" aria-label="Navegación de la práctica">
-        <button id="volver-niveles" class="boton-secundario" type="button">← Volver a niveles de complejidad</button>
-      </nav>
+      <nav class="navegacion-interna-practica" aria-label="Navegación de la práctica"><button id="volver-niveles" class="boton-secundario" type="button">← Volver a niveles de complejidad</button></nav>
       <div class="encabezado-practica">
         <div><p id="etiqueta-nivel" class="sobretitulo">Nivel inicial</p><h2 id="titulo-practica">Lectura: signo a carácter</h2><p id="instruccion">Observa el signo Braille y selecciona el carácter que representa.</p></div>
         <div class="progreso" aria-label="Progreso"><span>Ejercicio <strong id="numero-ejercicio">1</strong> de <strong id="total-ejercicios">10</strong></span><span>Aciertos al primer intento: <strong id="aciertos">0</strong></span><span>Errores: <strong id="errores">0</strong></span></div>
@@ -78,9 +76,13 @@
       <div id="resultado" class="resultado" role="status" aria-live="polite">Selecciona una respuesta y comprueba.</div>
 
       <section id="panel-constancia" class="panel-constancia" aria-labelledby="titulo-panel-constancia" hidden>
-        <p class="sobretitulo">Logro alcanzado</p><h2 id="titulo-panel-constancia">Genera tu constancia simbólica</h2><p id="texto-logro-panel">Completaste el nivel establecido. Escribe tu nombre para generar un reconocimiento educativo y motivacional.</p>
-        <div class="campo-constancia"><label for="nombre-constancia">Nombre del participante</label><input id="nombre-constancia" type="text" maxlength="80" autocomplete="name" placeholder="Escribe tu nombre completo"></div>
+        <p class="sobretitulo">Logro alcanzado</p><h2 id="titulo-panel-constancia">Genera tu constancia simbólica</h2><p id="texto-logro-panel">Completaste el nivel establecido. Puedes aparecer con un identificador anónimo o usar voluntariamente tu nombre.</p>
+        <fieldset class="opciones-identidad"><legend>¿Cómo deseas aparecer en la constancia?</legend><label class="opcion-identidad"><input type="radio" name="identidad-constancia" value="anonimo" checked><span>Usar un identificador anónimo predeterminado.</span></label><label class="opcion-identidad"><input type="radio" name="identidad-constancia" value="nombre"><span>Usar voluntariamente mi nombre.</span></label></fieldset>
+        <div id="campo-nombre-opcional" class="campo-constancia" hidden><label for="nombre-constancia">Nombre del participante</label><input id="nombre-constancia" type="text" maxlength="80" autocomplete="name" placeholder="Escribe tu nombre completo"></div>
+        <label class="opcion-consentimiento"><input id="consentimiento-registro" type="checkbox"><span>Autorizo el registro de los datos de uso de esta actividad con fines estadísticos y de mejora educativa. El registro puede realizarse mediante un identificador anónimo.</span></label>
+        <p class="aviso-privacidad">No se solicitan correo electrónico, documento de identidad, teléfono ni datos de contacto. La constancia puede generarse aunque no autorices el registro estadístico.</p>
         <div class="acciones-constancia"><button id="generar-constancia" class="boton-principal" type="button">Generar constancia simbólica</button></div>
+        <p id="estado-registro" class="estado-registro" role="status" aria-live="polite"></p>
         <p class="aviso-simbolico"><strong>Importante:</strong> este documento es simbólico, educativo y motivacional. No constituye certificado oficial, acreditación académica ni constancia institucional de capacitación.</p>
       </section>
     </section>
@@ -97,6 +99,7 @@
 
   <footer><div class="footer-contenido"><div class="footer-bloque footer-marca"><img class="footer-logo" src="https://crebe-ucayali.github.io/banco-digital-accesible/logo-crebe.png" alt="Logo del CREBE Señor de los Milagros - Ucayali"><div><h2>Práctica Braille v2</h2><p>Versión experimental con niveles de complejidad y práctica personalizada del módulo Materiales Educativos Accesibles.</p></div></div><div class="footer-bloque"><h2>Enlaces de MEA</h2><p><a href="../index.html">Volver a Materiales Educativos Accesibles</a><br><a href="../practica-braille/index.html">Abrir versión original</a><br><a href="https://crebe-ucayali.github.io/">Inicio principal</a></p></div><div class="footer-bloque"><h2>Contacto CREBE</h2><p>CREBE "Señor de los Milagros" - Ucayali<br>Centro de Recursos de Educación Básica Especial<br><a href="https://crebe-ucayali.github.io/accesos-complementarios/paginas/contacto.html">Contacto Institucional</a></p></div></div><div class="footer-final"><p>© 2026 Gabriel Berrospi. Desarrollo original. Uso institucional autorizado al CREBE "Señor de los Milagros" - Ucayali.</p></div></footer>
   <script src="practica-v2.js?v=4" defer></script>
+  <script src="seguimiento.js?v=1" defer></script>
   <script src="https://crebe-ucayali.github.io/accesos-complementarios/accesibilidad/accesibilidad.js?v=7" defer></script>
 </body>
 </html>
