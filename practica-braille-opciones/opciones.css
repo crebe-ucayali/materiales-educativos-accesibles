@@ -15,9 +15,9 @@ body .etiqueta{margin:0 0 14px;color:#c9f7ee;font-size:.86rem;font-weight:900;le
 body .portada h1{max-width:900px;margin:0 0 22px;color:#fff;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.5rem,5.8vw,4.15rem);line-height:1.04;letter-spacing:-.04em}
 body .subtitulo{max-width:880px;margin:0;color:rgba(255,255,255,.96);font-size:1.22rem;line-height:1.65}
 .contenido-opciones{max-width:1120px;margin:-78px auto 0;padding:0 18px 64px;position:relative;z-index:2}
-.panel-opciones{background:#fff;border-radius:28px;padding:34px;box-shadow:0 18px 48px rgba(0,0,0,.14)}
-.encabezado-opciones{max-width:820px;margin-bottom:26px}
-.encabezado-opciones h2{margin:.2rem 0 1rem;font-size:clamp(1.8rem,4vw,2.6rem)}
+.panel-opciones,.panel-teoria{background:#fff;border-radius:28px;padding:34px;box-shadow:0 18px 48px rgba(0,0,0,.14)}
+.encabezado-opciones,.encabezado-teoria{max-width:860px;margin-bottom:26px}
+.encabezado-opciones h2,.encabezado-teoria h2{margin:.2rem 0 1rem;font-size:clamp(1.8rem,4vw,2.6rem)}
 .grid-opciones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .tarjeta-opcion{display:flex;flex-direction:column;gap:14px;padding:28px;border:1px solid #cfd8dc;border-radius:22px;background:#f9fbfb;transition:background-color .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease}
 .tarjeta-opcion:hover,.tarjeta-opcion:focus-within{border:2px solid #0f766e;background:#f0fdfa;box-shadow:0 14px 30px rgba(15,118,110,.14);transform:translateY(-3px)}
@@ -28,7 +28,114 @@ body .subtitulo{max-width:880px;margin:0;color:rgba(255,255,255,.96);font-size:1
 .tarjeta-opcion ul{margin:0 0 8px;padding-left:1.2rem}
 .boton-opcion{margin-top:auto;display:inline-flex;justify-content:center;align-items:center;min-height:48px;padding:12px 18px;border-radius:999px;background:#0f766e;color:#fff;text-decoration:none;font-weight:900;text-align:center;transition:background-color .2s ease,box-shadow .2s ease,transform .2s ease}
 .boton-opcion:hover,.boton-opcion:focus-visible{background:#0b5f59;box-shadow:0 8px 18px rgba(15,118,110,.24);transform:translateY(-1px);outline:3px solid rgba(15,118,110,.22);outline-offset:3px}
+
+.panel-teoria{margin-top:28px}
+.acordeon-teoria{display:grid;gap:14px}
+.acordeon-item{overflow:hidden;border:1px solid #d2dee3;border-radius:20px;background:#f9fbfb;transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease}
+.acordeon-item[open]{border-color:#0f766e;background:#fff;box-shadow:0 12px 26px rgba(15,118,110,.12)}
+.acordeon-item summary{display:grid;grid-template-columns:46px minmax(0,1fr) 42px;align-items:center;gap:14px;min-height:78px;padding:15px 18px;cursor:pointer;list-style:none;color:#102a43}
+.acordeon-item summary::-webkit-details-marker{display:none}
+.acordeon-item summary:hover{background:#f0fdfa}
+.acordeon-item summary:focus-visible{outline:3px solid rgba(15,118,110,.35);outline-offset:-3px}
+.numero-acordeon{display:grid;width:42px;height:42px;place-items:center;color:#fff;background:#0f766e;border-radius:14px;font-weight:900}
+.texto-resumen{display:grid;gap:4px;min-width:0}
+.texto-resumen strong{color:#0b3550;font-size:1.08rem;line-height:1.3}
+.texto-resumen small{color:#486581;font-size:.9rem;line-height:1.4}
+.icono-acordeon{display:grid;width:38px;height:38px;place-items:center;border:1px solid #b9cdd4;border-radius:50%;background:#fff;color:#0f766e;font-size:1.55rem;font-weight:900}
+.icono-acordeon::before{content:"+"}
+.acordeon-item[open] .icono-acordeon::before{content:"−"}
+.contenido-acordeon{padding:8px 24px 26px 78px;border-top:1px solid #e3eaed;animation:mostrar-contenido .22s ease}
+.contenido-acordeon p,.contenido-acordeon li{color:#486581;line-height:1.7}
+.contenido-acordeon h3{margin:20px 0 8px;color:#0f766e;font-size:1.08rem}
+.contenido-acordeon h3:first-child{margin-top:8px}
+.nota-teoria{margin-top:16px;padding:16px 18px;color:#0b4f4a;background:#e6f4f1;border:1px solid rgba(15,118,110,.28);border-radius:16px;line-height:1.65}
+
+.celda-teoria{display:grid;grid-template-columns:repeat(2,54px);grid-template-rows:repeat(3,54px);gap:12px 18px;justify-content:center;margin:22px auto;max-width:150px}
+.celda-teoria span{display:grid;place-items:center;width:54px;height:54px;border:2px solid #0f766e;border-radius:50%;background:#e6f4f1;color:#0b4f4a;font-weight:900}
+.dos-columnas-teoria,.comparacion-sentidos,.orientaciones-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.dos-columnas-teoria>div,.comparacion-sentidos>div,.orientaciones-grid>section{padding:18px;background:#f8fbfc;border:1px solid #d5e1e6;border-radius:16px}
+.dos-columnas-teoria strong,.comparacion-sentidos strong{display:block;margin-bottom:5px;color:#0b3550}
+.dos-columnas-teoria p,.comparacion-sentidos p{margin:0}
+
+.serie-teoria{margin-top:18px;padding:18px;background:#f8fbfc;border:1px solid #d5e1e6;border-radius:18px}
+.serie-teoria h3{margin-top:0}
+.linea-alfabeto{display:grid;grid-template-columns:repeat(5,minmax(72px,1fr));gap:10px;margin-top:14px}
+.linea-alfabeto span{display:grid;min-height:48px;place-items:center;padding:8px;color:#0b3550;background:#fff;border:1px solid #c7d8df;border-radius:12px;font-family:"Segoe UI Symbol","Noto Sans Symbols 2",Arial,sans-serif;font-size:1.05rem;font-weight:900}
+.linea-corta{grid-template-columns:repeat(7,minmax(72px,1fr))}
+.tabla-series-compacta{display:grid;gap:8px;margin:16px 0}
+.tabla-series-compacta>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tabla-series-compacta span{display:grid;min-height:42px;place-items:center;padding:8px;background:#fff;border:1px solid #c7d8df;border-radius:10px;color:#0b3550;font-weight:900}
+.aclaracion-serie{margin:14px 0 0;font-size:.94rem}
+
+.flujo-regleta{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:20px 0}
+.paso-regleta{position:relative;min-height:230px;padding:18px;background:#f8fbfc;border:1px solid #d5e1e6;border-radius:18px}
+.paso-regleta:not(:last-child)::after{content:"→";position:absolute;top:50%;right:-17px;z-index:2;display:grid;width:22px;height:22px;place-items:center;color:#0f766e;background:#fff;border-radius:50%;font-weight:900;transform:translateY(-50%)}
+.paso-numero{display:grid;width:34px;height:34px;place-items:center;margin-bottom:12px;color:#fff;background:#0f766e;border-radius:11px;font-weight:900}
+.paso-regleta h3{margin:0 0 12px;color:#0b3550}
+.paso-regleta p{margin:12px 0 0;font-size:.91rem;line-height:1.55}
+.flecha-sentido{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:7px;color:#0b3550;font-size:.78rem;font-weight:900}
+.flecha-sentido span{position:relative;height:4px;background:#0f766e;border-radius:999px}
+.flecha-sentido.derecha span::after{content:"";position:absolute;right:-1px;top:50%;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:10px solid #0f766e;transform:translateY(-50%)}
+.flecha-sentido.izquierda span::before{content:"";position:absolute;left:-1px;top:50%;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:10px solid #0f766e;transform:translateY(-50%)}
+.mini-regleta{display:grid;gap:4px;margin-top:8px;text-align:center;font-size:.75rem;font-weight:900}
+.mini-tapa,.mini-base{padding:7px;color:#fff;background:#0b4f4a;border-radius:8px}
+.mini-papel{padding:11px 5px;color:#486581;background:#fffdf7;border:1px solid #d6ccb4}
+.giro-compacto{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;margin-top:8px;color:#0b3550;text-align:center;font-size:.78rem;font-weight:900}
+.giro-compacto b{color:#0f766e;font-size:2rem}
+
+.orientaciones-grid ul{margin:8px 0 0;padding-left:20px}
+.acceso-teoria-completa{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:24px;padding:20px 22px;background:#0b3550;border-radius:18px}
+.acceso-teoria-completa p{margin:0;color:#fff}
+.acceso-teoria-completa a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 18px;color:#0b3550;background:#fff;border-radius:999px;font-weight:900;text-decoration:none;text-align:center}
+.acceso-teoria-completa a:hover,.acceso-teoria-completa a:focus-visible{background:#c9f7ee;outline:3px solid rgba(201,247,238,.4);outline-offset:3px}
 .aviso-pedagogico{margin-top:28px}
-@media(max-width:760px){body .cabecera{padding:26px 18px 116px}body .navegacion{align-items:flex-start;flex-direction:column}body .portada{margin-top:54px}.contenido-opciones{margin-top:-58px}.panel-opciones{padding:22px}.grid-opciones{grid-template-columns:1fr}.tarjeta-opcion{padding:22px}.marca-institucional{align-items:flex-start}.marca-logo-superior{width:52px;height:52px}.marca-texto-superior{padding-left:12px}}
-@media(hover:none){.tarjeta-opcion:hover{border:1px solid #cfd8dc;background:#f9fbfb;box-shadow:none;transform:none}.tarjeta-opcion:focus-within{border:2px solid #0f766e;background:#f0fdfa;box-shadow:0 14px 30px rgba(15,118,110,.14);transform:none}}
-@media(prefers-reduced-motion:reduce){.tarjeta-opcion,.boton-opcion{transition:none}.tarjeta-opcion:hover,.tarjeta-opcion:focus-within,.boton-opcion:hover,.boton-opcion:focus-visible{transform:none}}
+
+@keyframes mostrar-contenido{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:980px){
+  .flujo-regleta{grid-template-columns:1fr}
+  .paso-regleta{min-height:auto}
+  .paso-regleta:not(:last-child)::after{content:"↓";top:auto;right:50%;bottom:-18px;transform:translateX(50%)}
+  .linea-corta{grid-template-columns:repeat(4,minmax(72px,1fr))}
+}
+
+@media(max-width:760px){
+  body .cabecera{padding:26px 18px 116px}
+  body .navegacion{align-items:flex-start;flex-direction:column}
+  body .portada{margin-top:54px}
+  .contenido-opciones{margin-top:-58px}
+  .panel-opciones,.panel-teoria{padding:22px}
+  .grid-opciones{grid-template-columns:1fr}
+  .tarjeta-opcion{padding:22px}
+  .marca-institucional{align-items:flex-start}
+  .marca-logo-superior{width:52px;height:52px}
+  .marca-texto-superior{padding-left:12px}
+  .contenido-acordeon{padding:8px 18px 22px}
+  .dos-columnas-teoria,.comparacion-sentidos,.orientaciones-grid{grid-template-columns:1fr}
+  .linea-alfabeto{grid-template-columns:repeat(3,minmax(72px,1fr))}
+  .linea-corta{grid-template-columns:repeat(3,minmax(72px,1fr))}
+  .acceso-teoria-completa{align-items:stretch;flex-direction:column}
+}
+
+@media(max-width:520px){
+  .acordeon-item summary{grid-template-columns:40px minmax(0,1fr) 36px;gap:10px;padding:13px 12px}
+  .numero-acordeon{width:38px;height:38px}
+  .icono-acordeon{width:34px;height:34px}
+  .texto-resumen strong{font-size:1rem}
+  .texto-resumen small{font-size:.82rem}
+  .linea-alfabeto,.linea-corta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tabla-series-compacta>div{grid-template-columns:repeat(3,minmax(62px,1fr))}
+  .tabla-series-compacta span{font-size:.9rem}
+}
+
+@media(hover:none){
+  .tarjeta-opcion:hover{border:1px solid #cfd8dc;background:#f9fbfb;box-shadow:none;transform:none}
+  .tarjeta-opcion:focus-within{border:2px solid #0f766e;background:#f0fdfa;box-shadow:0 14px 30px rgba(15,118,110,.14);transform:none}
+  .acordeon-item summary:hover{background:transparent}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .tarjeta-opcion,.boton-opcion,.acordeon-item{transition:none}
+  .tarjeta-opcion:hover,.tarjeta-opcion:focus-within,.boton-opcion:hover,.boton-opcion:focus-visible{transform:none}
+  .contenido-acordeon{animation:none}
+}
