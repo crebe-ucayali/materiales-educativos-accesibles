@@ -60,11 +60,11 @@ body .subtitulo{max-width:880px;margin:0;color:rgba(255,255,255,.96);font-size:1
 .serie-teoria{margin-top:18px;padding:18px;background:#f8fbfc;border:1px solid #d5e1e6;border-radius:18px}
 .serie-teoria h3{margin-top:0}
 .linea-alfabeto{display:grid;grid-template-columns:repeat(5,minmax(72px,1fr));gap:10px;margin-top:14px}
-.linea-alfabeto span{display:grid;min-height:48px;place-items:center;padding:8px;color:#0b3550;background:#fff;border:1px solid #c7d8df;border-radius:12px;font-family:"Segoe UI Symbol","Noto Sans Symbols 2",Arial,sans-serif;font-size:1.05rem;font-weight:900}
+.linea-alfabeto span{display:grid;min-height:56px;place-items:center;padding:10px;color:#0b3550;background:#fff;border:1px solid #c7d8df;border-radius:12px;font-family:"Segoe UI Symbol","Noto Sans Symbols 2",Arial,sans-serif;font-size:1.28rem;font-weight:900;line-height:1.2}
 .linea-corta{grid-template-columns:repeat(7,minmax(72px,1fr))}
 .tabla-series-compacta{display:grid;gap:8px;margin:16px 0}
 .tabla-series-compacta>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.tabla-series-compacta span{display:grid;min-height:42px;place-items:center;padding:8px;background:#fff;border:1px solid #c7d8df;border-radius:10px;color:#0b3550;font-weight:900}
+.tabla-series-compacta span{display:grid;min-height:50px;place-items:center;padding:9px;background:#fff;border:1px solid #c7d8df;border-radius:10px;color:#0b3550;font-family:"Segoe UI Symbol","Noto Sans Symbols 2",Arial,sans-serif;font-size:1.16rem;font-weight:900;line-height:1.2}
 .aclaracion-serie{margin:14px 0 0;font-size:.94rem}
 
 .flujo-regleta{display:grid;grid-template-columns:1fr;gap:18px;margin:20px 0}
@@ -122,7 +122,7 @@ body .subtitulo{max-width:880px;margin:0;color:rgba(255,255,255,.96);font-size:1
   .texto-resumen small{font-size:.82rem}
   .linea-alfabeto,.linea-corta{grid-template-columns:repeat(2,minmax(0,1fr))}
   .tabla-series-compacta>div{grid-template-columns:repeat(3,minmax(62px,1fr))}
-  .tabla-series-compacta span{font-size:.9rem}
+  .tabla-series-compacta span{font-size:1.02rem}
 }
 
 @media(hover:none){
